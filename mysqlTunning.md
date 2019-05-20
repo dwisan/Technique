@@ -1,3 +1,13 @@
+> MySQL Server Hardware and OS Tuning:
+```
+```
+MySQL Schema Optimization:
+```
+```
+Query Optimization:
+```
+```
+> MySQL Configuration:
 ```
 - [x] Key: innodb_buffer_pool_size
 
