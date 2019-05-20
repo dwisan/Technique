@@ -34,6 +34,66 @@ print
 ```
 
 ```
+- [x] Key: innodb_buffer_pool_instances
+
+Catagory: Innodb Engine
+Description : directive controls the number of memory pages Innodb creates
+Value : equal CPU Core (should not exceed Total_IO_Threads)
+Example:
+  innodb_buffer_pool_instances=8
+
+Calulate:
+Total_IO_Threads = (innodb_read_io_threads + innodb_write_io_threads)
+```
+
+```
+- [x] Key: innodb_read_io_threads , innodb_write_io_threads
+
+Catagory: Innodb Engine
+Description : Input/Output threads are sub-processes of MySQL 
+              which directly access the IBP memory pages
+Value : innodb_read_io_threads + innodb_write_io_threads = CPU Core = innodb_buffer_pool_instances
+
+Example: if have CPU 8 core
+  
+  case: Write_Heavy:Read_Heavy = 1:1
+     innodb_read_io_threads=4
+     innodb_write_io_threads=4
+  
+  case: Write_Heavy:Read_Heavy = 2:1
+     innodb_read_io_threads=2
+     innodb_write_io_threads=6
+  
+  case: Write_Heavy:Read_Heavy = 1:2
+     innodb_read_io_threads=6
+     innodb_write_io_threads=2
+     
+Calculate:
+
+mysql -uroot -p -e 'SHOW GLOBAL STATUS;'|\
+awk '
+$1~/Com_(delete|insert|update|replace)$/{
+w += $2
+printf $0 "\t + Total_Writes = " w "\n"
+}
+$1~/Com_(select)/{
+r += $2
+printf $0 "\t + Total_Reads = " r "\n"
+}
+END {
+printf "\nRead:Write Ratio:\n\t" r ":" w " "
+if (r >= w) {
+R=sprintf("%.0f",r/w)
+print R ":1"
+} else {
+W=sprintf("%.0f",w/r)
+print "1:" W
+}
+}'
+
+```
+
+```
 - [x] Key: max_connections
 
 Catagory: Global
