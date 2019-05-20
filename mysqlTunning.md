@@ -27,3 +27,15 @@ Value : -
 Example:
   skip-name-resolve
 ```
+
+```
+Key : tmp_table_size , max_heap_table_size
+
+Catagory: Global
+Description : help you prevent disk writes
+Value : giving 64M for both values for every GB of RAM on the server
+Example:
+  tmp_table_size = 64M
+  max_heap_table_size = 64M
+```
+
