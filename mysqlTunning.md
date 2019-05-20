@@ -20,13 +20,16 @@ Example:
 Calulate:
 
 awk '
-/MemTotal/{
-$3="GB"
-$2=sprintf("%.0f",$2/1048576)
+/MemAvail/{
+$3="G";_=$2
+$2=sprintf("% 3.0f",_/1048576)
 print
-$1="  Mem80%:"
-$2=sprintf("%.0f",$2*.8)
+for (i=80;i>=25;i-=10) {
+$1="MemAvail_"i"%:"
+$2=sprintf("% 3.0f",_*(i/100)/1048576)
+$4=sprintf("| %.0f M",_*(i/100)/1024)
 print
+}
 }' /proc/meminfo
 ```
 
