@@ -1,6 +1,7 @@
 ```
-Catagory: Innodb Engine
 Key : innodb_buffer_pool_size
+
+Catagory: Innodb Engine
 Description : used for caching data and indexes in memory
 Value : On a dedicated box, value of 60%-70% of RAM
 Example:
@@ -8,8 +9,9 @@ Example:
 ```
 
 ```
-Catagory: Global
 Key : max_connections
+
+Catagory: Global
 Description : how many concurrent connections are permitted.
 Value : apply depends on your particular MySQL/MariaDB usage.
 Example:
