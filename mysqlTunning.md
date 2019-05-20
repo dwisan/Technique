@@ -18,6 +18,7 @@ Example:
   innodb_buffer_pool_size=1G
 
 Calulate:
+
 awk '
 /MemTotal/{
 $3="GB"
