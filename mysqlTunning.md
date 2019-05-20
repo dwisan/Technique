@@ -16,6 +16,17 @@ Description : used for caching data and indexes in memory
 Value : On a dedicated box, value of 60%-70% of RAM
 Example:
   innodb_buffer_pool_size=1G
+
+Calulate:
+awk '
+/MemTotal/{
+$3="GB"
+$2=sprintf("%.0f",$2/1048576)
+print
+$1="  Mem80%:"
+$2=sprintf("%.0f",$2*.8)
+print
+}' /proc/meminfo
 ```
 
 ```
