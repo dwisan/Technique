@@ -1,5 +1,5 @@
 ```
-- [x] Key : innodb_buffer_pool_size
+- [x] Key: innodb_buffer_pool_size
 
 Catagory: Innodb Engine
 Description : used for caching data and indexes in memory
@@ -9,7 +9,7 @@ Example:
 ```
 
 ```
-- [x] Key : max_connections
+- [x] Key: max_connections
 
 Catagory: Global
 Description : how many concurrent connections are permitted.
@@ -19,7 +19,7 @@ Example:
 ```
 
 ```
-- [x] Key : skip-name-resolve
+- [x] Key: skip-name-resolve
 
 Catagory: Global
 Description : disable the reverse DNS lookup 
@@ -29,7 +29,7 @@ Example:
 ```
 
 ```
-- [x] Key : tmp_table_size , max_heap_table_size
+- [x] Key: tmp_table_size , max_heap_table_size
 
 Catagory: Global
 Description : help you prevent disk writes
