@@ -17,3 +17,13 @@ Value : apply depends on your particular MySQL/MariaDB usage.
 Example:
   max_connections = 300
 ```
+
+```
+Key : skip-name-resolve
+
+Catagory: Global
+Description : disable the reverse DNS lookup 
+Value : -
+Example:
+  skip-name-resolve
+```
