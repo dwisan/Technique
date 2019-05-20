@@ -70,6 +70,12 @@ Example: if have CPU 8 core
      
 Calculate:
 
+Total_Reads = Com_select
+SHOW GLOBAL STATUS LIKE 'Com_select';
+
+Total_Writes = Com_delete + Com_insert + Com_replace + Com_update
+SHOW GLOBAL STATUS WHERE Variable_name IN ('Com_insert', 'Com_update', 'Com_replace', 'Com_delete');
+
 mysql -uroot -p -e 'SHOW GLOBAL STATUS;'|\
 awk '
 $1~/Com_(delete|insert|update|replace)$/{
