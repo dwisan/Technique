@@ -21,7 +21,7 @@ FROM information_schema.TABLES
 WHERE table_schema = "database_name"
 ORDER BY (data_length + index_length) DESC;
 ```
-> calculate cache myisam
+> calculate key buffer size of myisam
 ```
 SELECT CONCAT(ROUND(KBS/POWER(1024,
 IF(PowerOf1024<0,0,IF(PowerOf1024>3,0,PowerOf1024)))+0.4999),
