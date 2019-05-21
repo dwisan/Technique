@@ -21,3 +21,17 @@ FROM information_schema.TABLES
 WHERE table_schema = "database_name"
 ORDER BY (data_length + index_length) DESC;
 ```
+> calculate cache myisam
+```
+SELECT CONCAT(ROUND(KBS/POWER(1024,
+IF(PowerOf1024<0,0,IF(PowerOf1024>3,0,PowerOf1024)))+0.4999),
+SUBSTR(' KMG',IF(PowerOf1024<0,0,
+IF(PowerOf1024>3,0,PowerOf1024))+1,1))
+recommended_key_buffer_size FROM
+(SELECT LEAST(POWER(2,32),KBS1) KBS
+FROM (SELECT SUM(index_length) KBS1
+FROM information_schema.tables
+WHERE engine='MyISAM' AND
+table_schema NOT IN ('information_schema','mysql')) AA ) A,
+(SELECT 2 PowerOf1024) B;
+```
