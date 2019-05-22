@@ -1,12 +1,12 @@
 > database size
-```
+```sql
 SELECT table_schema AS "Database", 
 ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)" 
 FROM information_schema.TABLES 
 GROUP BY table_schema;
 ```
 > database size with engine MyISAM
-```
+```sql
 SELECT table_schema AS "Database", 
 ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)" 
 FROM information_schema.TABLES
@@ -14,7 +14,7 @@ WHERE ENGINE='MyISAM'
 GROUP BY table_schema;
 ```
 > tables size in a databases
-```
+```sql
 SELECT table_name AS "Table",
 ROUND(((data_length + index_length) / 1024 / 1024), 2) AS "Size (MB)"
 FROM information_schema.TABLES
@@ -22,7 +22,7 @@ WHERE table_schema = "database_name"
 ORDER BY (data_length + index_length) DESC;
 ```
 > calculate key buffer size of myisam
-```
+```sql
 SELECT CONCAT(ROUND(KBS/POWER(1024,
 IF(PowerOf1024<0,0,IF(PowerOf1024>3,0,PowerOf1024)))+0.4999),
 SUBSTR(' KMG',IF(PowerOf1024<0,0,
@@ -36,7 +36,7 @@ table_schema NOT IN ('information_schema','mysql')) AA ) A,
 (SELECT 2 PowerOf1024) B;
 ```
 > calculate buffer pool size of innodb
-```
+```sql
 SELECT CONCAT(ROUND(KBS/POWER(1024,
 IF(PowerOf1024<0,0,IF(PowerOf1024>3,0,PowerOf1024)))+0.49999),
 SUBSTR(' KMG',IF(PowerOf1024<0,0,
