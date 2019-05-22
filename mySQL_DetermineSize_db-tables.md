@@ -45,3 +45,13 @@ FROM (SELECT SUM(data_length+index_length) KBS FROM information_schema.tables
 WHERE engine='InnoDB') A,
 (SELECT 2 PowerOf1024) B;
 ```
+>Script: Calculate key_buffer_size from Index Lengths
+```sql
+set @overhead = 5 / 100;
+select count(INDEX_LENGTH) as Indexes,
+sum(INDEX_LENGTH) as Total_Index_Length,
+floor(@overhead * 100) as PCT,
+floor(sum(INDEX_LENGTH)*@overhead) as Overhead,
+floor(sum(INDEX_LENGTH)*(1+@overhead)) as key_buffer_size
+FROM information_schema.TABLES WHERE ENGINE = 'MyISAM';
+```
