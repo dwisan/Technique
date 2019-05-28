@@ -24,8 +24,8 @@
 
 * --filename=random_read_write.fio ชื่อไฟล์
 * --size=4G ขนาดไฟล์ที่ต้องการทดสอบ
-* --readwrite=randrw กำหนดให้อ่านเขียนแบบ สุ่ม
-* --rwmixread=75 กำหนดอัตราส่วนอ่านและเขียนเป็น 25:75 %
+* --readwrite=randrw กำหนดให้อ่านและเขียนแบบ สุ่ม
+* --rwmixread=75 กำหนดอัตราส่วนอ่านและเขียนเป็น 75:25 (อ่าน 75% เขียน 25%)
 
 [x] Random read performance
 
