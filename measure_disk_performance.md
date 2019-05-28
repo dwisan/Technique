@@ -19,17 +19,26 @@
 [x] RW Performance
 # fio --randrepeat=1 --ioengine=libaio --direct=1 \
 --gtod_reduce=1 --name=test --filename=random_read_write.fio \
---bs=4k --iodepth=64 --size=4G --readwrite=randrw --rwmixread=75
+--bs=4k --iodepth=64 --size=4G --readwrite=randrw  --rwmixread=75
+
+* --filename=random_read_write.fio ชื่อไฟล์
+* --size=4G ขนาดไฟล์ที่ต้องการทดสอบ
+* --readwrite=randrw กำหนดให้อ่านเขียนแบบ สุ่ม
+* --rwmixread=75 กำหนดอัตราส่วนอ่านและเขียนเป็น 25:75 %
 
 [x] Random read performance
 # fio --randrepeat=1 --ioengine=libaio --direct=1 \
 --gtod_reduce=1 --name=test --filename=random_read.fio \
 --bs=4k --iodepth=64 --size=4G --readwrite=randread
 
+* --readwrite=randread กำหนดให้อ่านอย่างเดียวแบบ สุ่ม
+
 [x] Random write performance
 # fio --randrepeat=1 --ioengine=libaio --direct=1 \
 --gtod_reduce=1 --name=test --filename=random_write.fio \
 --bs=4k --iodepth=64 --size=4G --readwrite=randwrite
+
+* --readwrite=randwrite กำหนดให้เขียนอย่างเดียวแบบ สุ่ม
 ```
 
 >Latency measures with IOPing
