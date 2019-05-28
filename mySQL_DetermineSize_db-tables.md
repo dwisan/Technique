@@ -1,16 +1,24 @@
-> database size
+> Databases Size 
 ```sql
 SELECT table_schema AS "Database", 
 ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)" 
 FROM information_schema.TABLES 
 GROUP BY table_schema;
 ```
-> database size with engine MyISAM
+> databases size (MyISAM)
 ```sql
 SELECT table_schema AS "Database", 
 ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)" 
 FROM information_schema.TABLES
 WHERE ENGINE='MyISAM'
+GROUP BY table_schema;
+```
+> databases size (InnoDB)
+```sql
+SELECT table_schema AS "Database", 
+ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)" 
+FROM information_schema.TABLES
+WHERE ENGINE='InnoDB'
 GROUP BY table_schema;
 ```
 > tables size in a databases
@@ -21,7 +29,7 @@ FROM information_schema.TABLES
 WHERE table_schema = "database_name"
 ORDER BY (data_length + index_length) DESC;
 ```
-> calculate key buffer size of myisam
+> Find current appropriate key buffer size of myisam 
 ```sql
 SELECT CONCAT(ROUND(KBS/POWER(1024,
 IF(PowerOf1024<0,0,IF(PowerOf1024>3,0,PowerOf1024)))+0.4999),
@@ -35,7 +43,7 @@ WHERE engine='MyISAM' AND
 table_schema NOT IN ('information_schema','mysql')) AA ) A,
 (SELECT 2 PowerOf1024) B;
 ```
-> calculate buffer pool size of innodb
+> Find current appropriate buffer pool size of innodb
 ```sql
 SELECT CONCAT(ROUND(KBS/POWER(1024,
 IF(PowerOf1024<0,0,IF(PowerOf1024>3,0,PowerOf1024)))+0.49999),
@@ -45,7 +53,7 @@ FROM (SELECT SUM(data_length+index_length) KBS FROM information_schema.tables
 WHERE engine='InnoDB') A,
 (SELECT 2 PowerOf1024) B;
 ```
->Script: Calculate key_buffer_size from Index Lengths
+> Calculate key_buffer_size from Index Lengths
 ```sql
 set @overhead = 5 / 100;
 select count(INDEX_LENGTH) as Indexes,
