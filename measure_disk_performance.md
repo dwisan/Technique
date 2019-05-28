@@ -17,6 +17,7 @@
 >Testing IOPS with fio
 ```
 [x] RW Performance
+
 # fio --randrepeat=1 --ioengine=libaio --direct=1 \
 --gtod_reduce=1 --name=test --filename=random_read_write.fio \
 --bs=4k --iodepth=64 --size=4G --readwrite=randrw  --rwmixread=75
@@ -27,6 +28,7 @@
 * --rwmixread=75 กำหนดอัตราส่วนอ่านและเขียนเป็น 25:75 %
 
 [x] Random read performance
+
 # fio --randrepeat=1 --ioengine=libaio --direct=1 \
 --gtod_reduce=1 --name=test --filename=random_read.fio \
 --bs=4k --iodepth=64 --size=4G --readwrite=randread
@@ -34,6 +36,7 @@
 * --readwrite=randread กำหนดให้อ่านอย่างเดียวแบบ สุ่ม
 
 [x] Random write performance
+
 # fio --randrepeat=1 --ioengine=libaio --direct=1 \
 --gtod_reduce=1 --name=test --filename=random_write.fio \
 --bs=4k --iodepth=64 --size=4G --readwrite=randwrite
