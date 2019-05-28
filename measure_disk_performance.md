@@ -10,8 +10,7 @@ ref: https://fio.readthedocs.io/en/latest/fio_doc.html
 >Install fio
 ```bash
 [x] CentOS,RHEL
-# wget https://mirrors.n-ix.net/fedora-epel/epel-release-latest-7.noarch.rpm
-# yum localinstall epel-release-latest-7.noarch.rpm
+# yum install epel-release -y
 # yum install fio
 
 [x] Ubuntu
