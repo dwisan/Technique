@@ -4,6 +4,8 @@
 ไม่เพียงพอต่องานที่เกิดขึ้นได้ ดังนั้นในการจัดทำเซิฟเวอร์สำหรับบริการระบบฐานข้อมูล จำเป็นต้องมีการทดสอบหาความสามารถ
 ของ disk เพื่อให้ทราบถึงขีดความสามารถในการรองรับงานด้วย ซึ่งในการทดสอบจะใช้เครื่องมือชื่อ fio และ ioping
 
+ref: https://fio.readthedocs.io/en/latest/fio_doc.html
+
 >Install fio
 ```bash
 [x] CentOS,RHEL
@@ -22,6 +24,7 @@
 --gtod_reduce=1 --name=test --filename=random_read_write.fio \
 --bs=4k --iodepth=64 --size=4G --readwrite=randrw  --rwmixread=75
 
+* --direct=1 ใช้ non-buffered I/O (O_DIRECT)
 * --filename=random_read_write.fio ชื่อไฟล์
 * --size=4G ขนาดไฟล์ที่ต้องการทดสอบ
 * --readwrite=randrw กำหนดให้อ่านและเขียนแบบ สุ่ม
