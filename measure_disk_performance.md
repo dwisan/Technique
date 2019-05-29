@@ -3,12 +3,12 @@
 (Input Output Per Second) เนื่องจากระบบฐานข้อมูลที่มีการใช้งานพร้อมๆ กันจำนวนมาก IOPS ของ disk อาจจะ
 ไม่เพียงพอต่องานที่เกิดขึ้นได้ ดังนั้นในการจัดทำเซิฟเวอร์สำหรับบริการระบบฐานข้อมูล จำเป็นต้องมีการทดสอบหาความสามารถ
 ของ disk เพื่อให้ทราบถึงขีดความสามารถในการรองรับงานด้วย 
-
+```
 [x] fio (flexible I/O tester) สำหรับทดสอบหาค่า IOPS 
 [X] ioping ทดสอบหาค่า latency
 
 ref: https://fio.readthedocs.io/en/latest/fio_doc.html
-
+```
 >Install fio
 ```bash
 [x] CentOS,RHEL
