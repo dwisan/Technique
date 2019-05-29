@@ -83,6 +83,7 @@ write: IOPS=489, BW=1960KiB/s (2007kB/s)(2047MiB/1069534msec)
 
 
 **** On 3D-NAND SATA SSD ****
+
 # fio --randrepeat=1 --ioengine=libaio --direct=1 \
  --gtod_reduce=1 --name=test --filename=random_read_write.fio \
  --bs=4k --iodepth=64 --size=4G --readwrite=randrw  --rwmixread=50
