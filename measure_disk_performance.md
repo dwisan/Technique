@@ -66,6 +66,8 @@ result:
  --bs=4k --iodepth=64 --size=4G --readwrite=randrw  --rwmixread=50
 
 result:
+read: IOPS=204, BW=818KiB/s (837kB/s)(2049MiB/2565884msec)
+write: IOPS=204, BW=817KiB/s (836kB/s)(2047MiB/2565884msec)
 
 
 **** On SAS 7,200RPM Disk (Raid 1, 8-disk) ****
