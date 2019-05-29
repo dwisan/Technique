@@ -49,7 +49,8 @@ ref: https://fio.readthedocs.io/en/latest/fio_doc.html
 
 examples:
 ```
-*on 5,400RPM Disk
+**** On 5,400RPM Disk ****
+
 # fio --randrepeat=1 --ioengine=libaio --direct=1 \
  --gtod_reduce=1 --name=test --filename=random_read_write.fio \
  --bs=4k --iodepth=64 --size=4G --readwrite=randrw  --rwmixread=50
@@ -58,7 +59,8 @@ result:
 
 
 
-*on 7,200RPM Disk (Raid 1 , 2-disk)
+**** On 7,200RPM Disk (Raid 1 , 2-disk) ****
+
 # fio --randrepeat=1 --ioengine=libaio --direct=1 \
  --gtod_reduce=1 --name=test --filename=random_read_write.fio \
  --bs=4k --iodepth=64 --size=4G --readwrite=randrw  --rwmixread=50
@@ -66,7 +68,8 @@ result:
 result:
 
 
-*on SAS 7,200RPM Disk (Raid 1, 8-disk)
+**** On SAS 7,200RPM Disk (Raid 1, 8-disk) ****
+
 # fio --randrepeat=1 --ioengine=libaio --direct=1 \
  --gtod_reduce=1 --name=test --filename=random_read_write.fio \
  --bs=4k --iodepth=64 --size=4G --readwrite=randrw  --rwmixread=50
@@ -75,7 +78,8 @@ result:
 read: IOPS=490, BW=1962KiB/s (2009kB/s)(2049MiB/1069534msec)
 write: IOPS=489, BW=1960KiB/s (2007kB/s)(2047MiB/1069534msec)
 
-*on 3D-NAND SATA SSD
+
+**** On 3D-NAND SATA SSD ****
 # fio --randrepeat=1 --ioengine=libaio --direct=1 \
  --gtod_reduce=1 --name=test --filename=random_read_write.fio \
  --bs=4k --iodepth=64 --size=4G --readwrite=randrw  --rwmixread=50
@@ -83,6 +87,7 @@ write: IOPS=489, BW=1960KiB/s (2007kB/s)(2047MiB/1069534msec)
 result:
 read: IOPS=2374, BW=9499KiB/s (9727kB/s)(2049MiB/220920msec)
 write: IOPS=2371, BW=9487KiB/s (9714kB/s)(2047MiB/220920msec)
+
 ```
 >Latency measures with IOPing
 ```bash
