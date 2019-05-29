@@ -59,8 +59,12 @@ result:
 read: IOPS=85, BW=340KiB/s (349kB/s)(2049MiB/6165740msec)
 write: IOPS=84, BW=340KiB/s (348kB/s)(2047MiB/6165740msec)
 
+สรุปผล: 
+   hdd คอมพิวเตอร์ที่มีความเร็ว 5400 รอบต่อนาที จะมีค่า IOPS ในกรณีที่มีการอ่านและเขียนแบบสุ่ม พร้อมกัน
+   ที่อัตราส่วน 50:50 จะได้ค่า IOPS สำหรับการอ่านอยู่ที่ 85 ครั้งต่อวินาที และ 84 ครั้งต่อวินาที
+   สำหรับการเขียน 
 
-**** On 7,200RPM Disk (Raid 1 , 2-disk) ****
+**** On SATA 7,200RPM Disk (Raid 1 , 2-disk) ****
 
 # fio --randrepeat=1 --ioengine=libaio --direct=1 \
  --gtod_reduce=1 --name=test --filename=random_read_write.fio \
@@ -70,7 +74,11 @@ result:
 read: IOPS=204, BW=818KiB/s (837kB/s)(2049MiB/2565884msec)
 write: IOPS=204, BW=817KiB/s (836kB/s)(2047MiB/2565884msec)
 
-
+สรุปผล: 
+   SATA hdd สำหรับเซิฟเวอร์ที่มีความเร็ว 7200 รอบต่อนาที จำนวน 2 ลูก ที่อยุ่บน hardware raid 1 (mirror)
+   จะมีค่า IOPS ในกรณีที่มีการอ่านและเขียนแบบสุ่ม พร้อมกัน ที่อัตราส่วน 50:50 จะได้ค่า IOPS 
+   สำหรับการอ่านอยู่ที่ 204 ครั้งต่อวินาที และ 204 ครั้งต่อวินาที สำหรับการเขียน 
+   
 **** On SAS 7,200RPM Disk (Raid 1, 8-disk) ****
 
 # fio --randrepeat=1 --ioengine=libaio --direct=1 \
@@ -81,6 +89,10 @@ result:
 read: IOPS=490, BW=1962KiB/s (2009kB/s)(2049MiB/1069534msec)
 write: IOPS=489, BW=1960KiB/s (2007kB/s)(2047MiB/1069534msec)
 
+สรุปผล: 
+   (SSCSI)SATA hdd สำหรับเซิฟเวอร์ที่มีความเร็ว 7200 รอบต่อนาที จำนวน 8 ลูก ที่อยุ่บน hardware raid 1 (mirror)
+   จะมีค่า IOPS ในกรณีที่มีการอ่านและเขียนแบบสุ่ม พร้อมกัน ที่อัตราส่วน 50:50 จะได้ค่า IOPS 
+   สำหรับการอ่านอยู่ที่ 490 ครั้งต่อวินาที และ 489 ครั้งต่อวินาที สำหรับการเขียน 
 
 **** On 3D-NAND SATA SSD ****
 
@@ -92,6 +104,10 @@ result:
 read: IOPS=2374, BW=9499KiB/s (9727kB/s)(2049MiB/220920msec)
 write: IOPS=2371, BW=9487KiB/s (9714kB/s)(2047MiB/220920msec)
 
+สรุปผล: 
+   SSD SATA สำหรับคอมพิวเตอร์ทั่วไปยี่ห้อ WD Blue 3D-NAND 
+   จะมีค่า IOPS ในกรณีที่มีการอ่านและเขียนแบบสุ่ม พร้อมกัน ที่อัตราส่วน 50:50 จะได้ค่า IOPS 
+   สำหรับการอ่านอยู่ที่ 2374 ครั้งต่อวินาที และ 2371 ครั้งต่อวินาที สำหรับการเขียน 
 ```
 >Latency measures with IOPing
 ```bash
