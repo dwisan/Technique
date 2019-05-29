@@ -56,7 +56,8 @@ examples:
  --bs=4k --iodepth=64 --size=4G --readwrite=randrw  --rwmixread=50
 
 result:
-
+read: IOPS=85, BW=340KiB/s (349kB/s)(2049MiB/6165740msec)
+write: IOPS=84, BW=340KiB/s (348kB/s)(2047MiB/6165740msec)
 
 
 **** On 7,200RPM Disk (Raid 1 , 2-disk) ****
