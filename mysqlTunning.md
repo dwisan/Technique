@@ -128,5 +128,18 @@ Value : giving 64M for both values for every GB of RAM on the server
 Example:
   tmp_table_size = 64M
   max_heap_table_size = 64M
+
+find Tuning:
+
+*Find out current value of tmp_table_size
+mysql> show global variables like 'tmp_table_size';
+
+*Find out percentage of tables created on disk
+mysql> show global status like 'created_tmp_disk_tables';
+mysql> show global status like 'created_tmp_tables';
+
+Tmp_disk_tables=((created_tmp_disk_tables*100/(created_tmp_tables+created_tmp_disk_tables))
+
+
 ```
 
